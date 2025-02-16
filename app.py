@@ -3,7 +3,7 @@ import requests
 import pandas as pd
 import datetime
 import folium
-from streamlit_folium import st_folium
+from streamlit_folium import folium_static
 
 # API URLs
 COMPLETES_URL = "https://api-db.sota.org.uk/admin/sota_completes_by_id?id=46844&desc=0&year=all"
@@ -76,7 +76,7 @@ else:
             icon=folium.Icon(color="lightgreen" if row["Points"] == 1 else "green" if row["Points"] ==2 else "darkgreen" if row["Points"] == 4 else "orange" if row["Points"] == 6 else "darkred" if row["Points"] == 8 else "red")
         ).add_to(m)
 
-    st_folium(m,
+    folium_static(m,
     height=600,
     width=700,
     )
