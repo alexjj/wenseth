@@ -3,7 +3,7 @@ import requests
 import pandas as pd
 import datetime
 import folium
-from streamlit_folium import folium_static
+from streamlit_folium import st_folium
 
 # API URLs
 COMPLETES_URL = "https://api-db2.sota.org.uk/logs/completes/46844"
@@ -89,7 +89,7 @@ else:
             icon=folium.Icon(color="lightgreen" if row["Points"] == 1 else "green" if row["Points"] ==2 else "darkgreen" if row["Points"] == 4 else "orange" if row["Points"] == 6 else "darkred" if row["Points"] == 8 else "red")
         ).add_to(m)
 
-    folium_static(m,
+    st_folium(m,
     height=600,
     width=700,
     )
@@ -129,5 +129,5 @@ if missing_s2s_summits:
             icon=folium.Icon(color="lightgreen" if row["Points"] == 1 else "green" if row["Points"] ==2 else "darkgreen" if row["Points"] == 4 else "orange" if row["Points"] == 6 else "darkred" if row["Points"] == 8 else "red")
         ).add_to(m_s2s)
 
-    folium_static(m_s2s, height=600, width=700)
+    st_folium(m_s2s, height=600, width=700)
     st.dataframe(df_s2s, hide_index=True, column_order=("Summit", "Code", "Altitude", "Points"))
