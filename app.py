@@ -6,7 +6,7 @@ import folium
 from streamlit_folium import folium_static
 
 # API URLs
-COMPLETES_URL = "https://api-db.sota.org.uk/admin/sota_completes_by_id?id=46844&desc=0&year=all"
+COMPLETES_URL = "https://api-db2.sota.org.uk/logs/completes/46844"
 SUMMITS_URL = "https://sotl.as/api/regions/GM/ES"
 
 # Fetch user completes
