@@ -11,7 +11,7 @@ SUMMITS_URL = "https://sotl.as/api/regions/GM/ES"
 S2S_URL = "https://api-db2.sota.org.uk/logs/s2s/46844/9999/0"
 
 # Fetch user completes
-@st.cache_data
+st.cache_data
 def get_completed_summits():
     response = requests.get(COMPLETES_URL)
     if response.status_code == 200:
@@ -29,7 +29,7 @@ def get_valid_summits():
     return []
 
 # Fetch S2S activations
-@st.cache_data
+st.cache_data
 def get_s2s_summits():
     response = requests.get(S2S_URL)
     if response.status_code == 200:
@@ -50,7 +50,7 @@ def get_missing_s2s_summits():
 
 # Streamlit UI
 st.set_page_config(layout='centered', page_title="wenseth complete💯", page_icon=":100:")
-st.image("logo.png")
+
 
 missing_summits = get_missing_summits()
 if not missing_summits:
@@ -77,6 +77,8 @@ else:
     col1.metric("Completed", value=completed_count, border=True)
     col2.metric("Remaining", value=len(missing_summits), border=True)
 
+    st.dataframe(df, hide_index=True, column_order=("Summit", "Code", "Altitude", "Points"))
+
     # Display map with folium
     m = folium.Map(location=[df["Latitude"].mean(), df["Longitude"].mean()], zoom_start=8)
     for _, row in df.iterrows():
@@ -97,7 +99,7 @@ else:
     width=700,
     )
 
-    st.dataframe(df, hide_index=True, column_order=("Summit", "Code", "Altitude", "Points"))
+
 
 # Missing S2S Summits
 missing_s2s_summits = get_missing_s2s_summits()
@@ -134,3 +136,5 @@ if missing_s2s_summits:
 
     st_folium(m_s2s, height=600, width=700)
     st.dataframe(df_s2s, hide_index=True, column_order=("Summit", "Code", "Altitude", "Points"))
+
+st.image("logo.png")
