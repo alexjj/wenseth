@@ -5,6 +5,9 @@ import datetime
 import folium
 from streamlit_folium import st_folium
 
+# Streamlit UI
+st.set_page_config(layout='centered', page_title="wenseth complete💯", page_icon=":100:")
+
 # API URLs
 COMPLETES_URL = "https://api-db2.sota.org.uk/logs/completes/46844"
 SUMMITS_URL = "https://sotl.as/api/regions/GM/ES"
@@ -47,10 +50,6 @@ def get_missing_s2s_summits():
     chased_summits = get_s2s_summits()
     all_summits = get_valid_summits()
     return [s for s in all_summits if s["code"] not in chased_summits]
-
-# Streamlit UI
-st.set_page_config(layout='centered', page_title="wenseth complete💯", page_icon=":100:")
-
 
 missing_summits = get_missing_summits()
 if not missing_summits:
