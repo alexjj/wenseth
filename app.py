@@ -91,10 +91,7 @@ else:
             icon=folium.Icon(color="lightgreen" if row["Points"] == 1 else "green" if row["Points"] ==2 else "darkgreen" if row["Points"] == 4 else "orange" if row["Points"] == 6 else "darkred" if row["Points"] == 8 else "red")
         ).add_to(m)
 
-    st_folium(m,
-    height=600,
-    width=700,
-    )
+    st_folium(m, height=600, width=700, returned_objects=[])
 
 
 
@@ -131,7 +128,7 @@ if missing_s2s_summits:
             icon=folium.Icon(color="lightgreen" if row["Points"] == 1 else "green" if row["Points"] ==2 else "darkgreen" if row["Points"] == 4 else "orange" if row["Points"] == 6 else "darkred" if row["Points"] == 8 else "red")
         ).add_to(m_s2s)
 
-    st_folium(m_s2s, height=600, width=700)
+    st_folium(m_s2s, height=600, width=700, returned_objects=[])
     st.dataframe(df_s2s, hide_index=True, column_order=("Summit", "Code", "Altitude", "Points"))
 
 st.image("logo.png")
